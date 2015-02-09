@@ -30,7 +30,6 @@ def about(request):
     return render(request, 'about.html', context)
 
 def report(request):
-    context = {}
     if request.user.is_active and request.user.is_authenticated:
         decks = Deck.objects.filter(owner=request.user)
         jobs_applied = 0
@@ -56,7 +55,8 @@ def report(request):
                 "jobs_in_progress": jobs_in_progress,
                 "companies_applied": companies_applied,
         }
-    return render(request, 'report.html', context)
+        return render(request, 'report.html', context)
+    return render(request, 'landing.html', {'error_message': -12})
 
 # def get_all_cards(request):
 #     cards = Card.objects.all()

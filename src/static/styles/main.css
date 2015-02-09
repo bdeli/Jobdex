@@ -564,6 +564,10 @@ a {
 
 }
 
+.user_register .warning {
+  color: red;
+}
+
 .user_register {
   display: none;
 }

@@ -37,7 +37,7 @@ def signup_view(request):
                 error_message = user_form.errors.items()[0][1]
     else:
         error_message = None
-    context = {'error_message': -1}
+    context = {'error_message': -2}
     return render(request, 'landing.html', context)
 
 @csrf_exempt
@@ -51,7 +51,7 @@ def login_view(request):
         if user is not None and user.is_active:
             login(request, user)
         else:
-            context = {'error_message': "-1"}
+            context = {'error_message': -1}
             return render(request, 'landing.html', context)
         return redirect('home')
     else:

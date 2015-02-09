@@ -27,6 +27,10 @@
                <h1 id="login-error">Credentials incorrect</h1>
                {% endif %}
 
+               {% if error_message == -2 %} <!-- username exists -->
+               <h1 id="endpt-error">Username Already Exists</h1>
+               {% endif %}
+
                <div id="modal" class="popupContainer" style="display:none;">
                     <header class="popupHeader">
                         <span class="header_title">Login</span>
@@ -52,26 +56,30 @@
                             <a href="#" class="create_account">Create Account</a>
                         </div>
 
-                        <div class="user_register">
-                            <form action="/signup/" method="post">
+                       
+                        <div class="user_register" ng-app="jobdex_app" ng-init="focus=false">
+                            <form name="test" action="/signup/" method="post" ng-controller="UserController" novalidation>
                                 {% csrf_token %}
                                 <label>Username</label>
-                                <input type="text" name="username">
+                               <input type="text" name="username" required>
                                 <br />
 
                                 <label>Email</label>
-                                <input type="email" name="email">
+                                <input type="email" ng-focus="focus=true" name="email" ng-model="email" required>
                                 <br />
+                                <div class="warning" ng-show="!validEmail()&&focus">**Please Fill in a Valid Email</div>
+                                <br>
 
                                 <label>Password</label>
-                                <input type="password" name="password">
+                                <input type="password" name="password" ng-model="password" maxlength="128" required>
+                                <div class="warning" ng-show="password!=confirm_password&&confirm_password!=empty">**Please Make Sure Passwords Match</div>
                                 <br />
 
                                 <label>Confirm Password</label>
                                 <input type="password" name="confirm_password">
                                 <br>
 
-                                <input type="submit" class="button" value="Create Account">
+                                <input type="submit" class="button" ng-show="password==confirm_password&&test.$valid" value="Create Account">
 
                             </form>
                         </div>

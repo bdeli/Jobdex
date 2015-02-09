@@ -46,7 +46,7 @@ $('input[type=text]').focusout(function() {
         });
     } else {
         $(this).css({
-            'border': 'none',
+            'border': '1px solid #DDD',
         });
     }
 });
