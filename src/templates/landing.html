@@ -67,8 +67,7 @@
                                 <label>Email</label>
                                 <input type="email" ng-focus="focus=true" name="email" ng-model="email" required>
                                 <br />
-                                <div class="warning" ng-show="!validEmail()&&focus">**Please Fill in a Valid Email</div>
-                                <br>
+                              
 
                                 <label>Password</label>
                                 <input type="password" name="password" ng-model="password" maxlength="128" required>
@@ -79,7 +78,7 @@
                                 <input type="password" name="confirm_password">
                                 <br>
 
-                                <input type="submit" class="button" ng-show="password==confirm_password&&test.$valid" value="Create Account">
+                                <input type="submit" class="button" value="Create Account">
 
                             </form>
                         </div>
