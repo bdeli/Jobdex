@@ -21,7 +21,6 @@ git fetch origin
 checkout <my_outdated_branch>
 git rebase origin/<my_outdated_branch
 ```
-*Don't fucking use merge*
 
 ### Making changes
 If you've added a python dependency via pip, run `pip freeze > requirements.txt`. For commit messages, keep it in this format: short line briefly explaining changes, followed by an empty line, followed by list of changes in detail.
